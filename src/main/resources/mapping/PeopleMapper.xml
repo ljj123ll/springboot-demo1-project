@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo13.Mapper.PeopleMapper">
+
+    <select id="getInfo" resultType="com.example.demo13.entity.People">
+        select *
+        from people
+        where id=#{id}
+    </select>
+
+    <insert id="insertInfo" parameterType="com.example.demo13.entity.People">
+        insert into people(id,timestamp,title,type,name,importance,pageviews,status,reviewer)
+        values (#{id},#{timestamp},#{title},#{type},#{name},#{importance},#{pageviews},#{status},#{reviewer});
+    </insert>
+
+    <delete id="deleteById">
+        delete
+        from people
+        where id=#{id}
+    </delete>
+
+    <update id="updateById" parameterType="com.example.demo13.entity.People">
+        update people
+        set timestamp = #{timestamp},title = #{title},
+            type = #{type}, name = #{name},
+            importance = #{importance}, pageviews = #{pageviews},
+            status = #{status}, reviewer = #{reviewer}
+
+        where id = #{id}
+    </update>
+
+    <select id="selectAll" resultType="com.example.demo13.entity.People">
+        select *
+        from people
+    </select>
+</mapper>
+
